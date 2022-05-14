@@ -41,8 +41,12 @@ About the Work
         - Understanding MCU interrupt Design, NVIC, Interrupt handling
         - Importance of "Volatile" Keyword
 
+---
 
 <span style="color:blue">**Information and Knowledge about the topics**</span>
+
 ---
-**Embedded Code Debugging**
----
+
+Embedded Code Debugging
+
+--- 
