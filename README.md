@@ -5,5 +5,4 @@ Here I will be doing stuffs about developing embedded software and Hardware syst
   - Concurrently Im also working on understanding arm processors and microcontroller specific architecture concepts and various protocals understanding and implementation.
   - In Comming Days I will be implementing FreeRTOS and DMA applications in github in near future.
 
-## subheader
-Just watched faraday youtube channel about git and made a local change inside my machine.
+## Mastering Microcontroller and Embedded Driver Development
