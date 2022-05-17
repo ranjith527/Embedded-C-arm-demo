@@ -89,5 +89,82 @@ Embedded Code Debugging
 ---
 **MCU Bus Interfaces**
 ---
-          
-     
+
+**Memory Map of MCU (STM32F411EVT6)**
+
+***Key Words MCU Bus Interfaces***
+___
+
+    - System Bus
+    - Processor
+    - ARM Cortex M4
+
+
+***Memory map of the MCU (Refere Memory Map of the specific Microcontrollers)***
+
+---       
+- ARM Cortex-M4
+- Width of the system bus is 32 bits.
+- The processor can produce 2^32 of different addresses. 4G. 
+- 0x0000_0000 to 0xffff_ffff
+- What's the base address of SRAM2 ?
+    - SRMA1 starts from 0x20000_0000
+    - Size of SRAM1 = X bytes
+    - base address of SRAM2 = 0x2000 0000 + X 
+    - BASE_ADDRESS_OF_SRAM2 = BASE_ADDRESS_OF_SRAM1 + SIZE_OF_SRAM1 
+---
+<br/>
+
+**MCU BUS INTERFACE**
+___
+
+    - I-Bus (Instruction Bus)
+    - D-Bus (Data Bus)
+    - S-Bus (System Busf )
+
+---
+<br/>
+
+**MCU CLOCKING SYSTEM**
+
+<br/>
+
+---
+
+*The Different Clock Sources for MCU are :*
+    
+    
+    - HSE Oscillator Clock (Crystal Oscillator)  External to MCU
+    - HSI Oscillator Clock (RC Oscillator) Internal to MCU
+    - Main PLL Clock (Phase Locked Loop) Internal to MCU
+
+_MCU Clock Source and HSE
+:_
+
+     HSE can be provided to the MCU via a crystal or external source ( from another ckt or from anther MCU)
+
+_MCU Clock Source and HSI :_
+
+    The HSI signal is generated from internal 16MHz or MUC specific RC Oscillator and can be used directly as a system clock, or as PLL input.
+
+    It also has a faster startup time than the HSE crystal oscillator however, even with calibration the frequency is less accurate than an external crystal oscillator or ceramic resonator.
+
+    On system reset the MCU select HSI as default clock source. 
+    
+_MCU Clock Source and PLL :_
+
+
+
+
+
+---
+
+<br/>
+
+**Pheripheral Clock configuration**
+___
+
+    - In morden MCU's, before using any peripheral, you must enable its peripheral clock using peripheral clock registers.
+    - By default, peripheral clocks of all most all peripherals will be disabled to save power.
+    - A peripheral won't take or respond to your configuration values until you enable its peripheral clock.
+    - In STM32 microcontrollers, peripheral clocks are managed through RCC registers.
