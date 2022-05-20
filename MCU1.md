@@ -1,170 +1,154 @@
-# **Mastering Microcontroller and Embedded Driver Development**
+# *Mastering Microcontroller and Embedded Driver Development*
 
-About the Work
+## About this Upskilling Process
 
----
-    This work is about learning the concepts of various hardware components working principles, architecture and programming of various Microcontrollers for utilizing on my needs.
+To Learn about bare metal driver development using Embedded C and Writing drivers for STM32 GPIO, SPI, I2C, USART from scratch
 
-    so the concepts and architecture I will be learning are
-        - Embedded Code Debugging
-        - Understanding MCU Memory Map
-        - MCU Bus Interface
-        - Understanding MCU Clocks and Details
-        - Understanding MCU Clock tree
-        - Understanding MCU Vector table
-        - Understanding MCU interrupt Design, NVIC, Interrupt handling
-        - Importance of "Volatile" Keyword
-        - GPIO concepts
-        - GPIO Programming structure and Registers
-        - GPIO Registers : SPEED, PULLUP/DOWN, IDR and ODR
-        - GPIO Alternate functionality register and usage
-        - GPIO peripheral clock control
-        - GPIO driver development and MCU specific header file with bus domain and peripheral Details
-        - Structuring peripheral registers
-        - Writing Clock enable and disable macros
-        - GPIO driver API requirements and handle structure
-        - GPIO driver API Implementation : Clock control, GPIO init and de-init, GPIO data read and write
-        - GPIO pin Interrupt configuration
+## My Personal Expectation from this Work
 
-## **KEY WORDS USED IN EMBEDDED SYSTEM**
-    - opcodes
-    - debugging
-    - breakpoints
+``` text
+To Learn, to understand the working of MUC's internal working process, it's the Architecture of the MCU and Building the Drivers, implementing various applications based on this in real world applications.
+```
 
-## **Phase - 1** 
-    Understanding Basic Working of Microcontrollers
+*To Work through this process I need to Sub divide the whole process into Logical pieces and Working on those thing on a Logical pattern to understand them better.*
 
-### **Things about to Learn**
-    
-        - Embedded Code Debugging
-        - Understanding MCU Memory Map
-        - MCU Bus Interface
-        - Understanding MCU Clocks and Details
-        - Understanding MCU Clock tree
-        - Understanding MCU Vector table
-        - Understanding MCU interrupt Design, NVIC, Interrupt handling
-        - Importance of "Volatile" Keyword
+## The Logical Phase of the Whole Processor
 
+- **Phase-1 Microcontroller Architecture Understanding**:
+  - Embedded Code Debugging
+  - Understanding MCU Memory Map
+  - MCU Bus Interface
+  - Understanding MCU Clock tree
+  - Understanding Vector table
+  - Understanding MCU Interrupt Design, NVIC, Interrupt handling
+  - Importance of "Volatile" Keyword
 
-<span style="color:blue">**Information and Knowledge about the topics**</span>
-
-
-
----
-Embedded Code Debugging
---- 
-    Embedded Code Debugging Options:
-        - Serial Wire Viewer and data tracing(printf style debugging)
-        - Single stepping, Stepping over and Stepping out 
-        - Breakpoint / Hardware Breakpoint (Inserting, Deleting and Skipping Breakpoints) 
-        - Disassembly (Converting Higher Level language to Assembly level language)
-        - Call stack
-        - Expression and Variable windows
-        - Memory browser (Used to examine various contents of memories of the microcontroller, flash, SRAM, etc)
-        - Data watch-points
-
-    1. SWV and ITM based prinf style debugging
-        - 
-    2. Single stepping, Stepping over and Stepping out 
-        - single stepping / stepping into ( stepping into the function or subroutine)
-        - stepping over ()
-        - stepping return / stepping over (stepping out of the function or subroutine)
-    3. Disassembly and Register windows 
-    
-    4. Breakpoints / Hardware Breakpoint
-        - Breakpoints are the ways to tell the processor to halt or stop exeecution at certain instruction address
-
-    5. Expression and Variable windows
-
-    6. Memory browser windows
-
-    7. Call stack and fault analyzers
-
-    8. Data watch-points
-
-    9. SFR windows (Special function register window)
-
-**Summary or General Understanding**
-
----
-**MCU Bus Interfaces**
----
-
-**Memory Map of MCU (STM32F411EVT6)**
-
-***Key Words MCU Bus Interfaces***
-___
-
-    - System Bus
-    - Processor
-    - ARM Cortex M4
+- **Phase-2 GPIO Driver Development**:[^1]
+  - GPIO Concepts
+  - GPIO Registers
+  - GPIO Alternate functionality register
+  - GPIO peripheral clock control
+  - GPIO Driver Development overview
+  - Structuring peripheral registers
+  - Writing clock enable and disable macros
+  - GPIO driver API requirements and handle structure
+  - GPIO driver API Implementation
+    - Clock control
+    - GPIO init and de-init
+    - GPIO data read and write
+  - GPIO Interrupt Configuration
+  - MCU I/O Pin specifications
+  
+- **Phase-3 SPI Driver Development**:[^2]
+  - SPI Introduction and Bus Details
+  - SPI bus configuration and functional block diagram
+  - STM32 NSS pin settings and management
+  - SPI CPOL and CPHA discussion
+  - SPI serial clock discussion
+  - SPI Driver: API requirements and configuration structure
+  - SPI Driver API Implementation
+    - Clock Control
+    - SPI init
+    - Send Data
+    - Receive Data
+  - SPI Interrupt
+  - SPI Interrupt mode
+  - SPI Driver API: IRQ handling
+  - Common problems in SPI
+  
+- **Phase-4 I2C Driver development**:
+  - I2C Introduction and I2C signals
+  - I2C modes
+  - Understanding I2C protocal
+  - I2C master and slave communication
+  - STM32 I2C functional block diagram
+  - I2C Driver API Implementation
+    - API Requirements and config structure
+    - I2C serial clock discussion(SCLK)
+    - I2C Init
+    - I2C Master send data
+    - I2C pull up resistance, rise time and bus capacitance
+  - I2C Interrupts and IRQ numbers
+  - I2C Interrupts based adipiscing
+  - I2C IRQ handler implementation
+  - I2C slave programming
+  - Common problems in I2C
 
 
-***Memory map of the MCU (Refere Memory Map of the specific Microcontrollers)***
+- **Phase-5 USART Driver Development**:
+  - USART Essentials
+  - USART functional block and Peripheral Clock
+  - USART Communication
+  - USART Driver API Implementation
+  - USART oversampling and baudrate
+  - USART Interrupts
 
----       
-- ARM Cortex-M4
-- Width of the system bus is 32 bits.
-- The processor can produce 2^32 of different addresses. 4G. 
-- 0x0000_0000 to 0xffff_ffff
-- What's the base address of SRAM2 ?
-    - SRMA1 starts from 0x20000_0000
-    - Size of SRAM1 = X bytes
-    - base address of SRAM2 = 0x2000 0000 + X 
-    - BASE_ADDRESS_OF_SRAM2 = BASE_ADDRESS_OF_SRAM1 + SIZE_OF_SRAM1 
----
-<br/>
-
-**MCU BUS INTERFACE**
-___
-
-    - I-Bus (Instruction Bus)
-    - D-Bus (Data Bus)
-    - S-Bus (System Busf )
-
----
-<br/>
-
-**MCU CLOCKING SYSTEM**
-
-<br/>
+- **Phase-6 Conclusion about the Learning Experience**
 
 ---
 
-*The Different Clock Sources for MCU are :*
-    
-    
-    - HSE Oscillator Clock (Crystal Oscillator)  External to MCU
-    - HSI Oscillator Clock (RC Oscillator) Internal to MCU
-    - Main PLL Clock (Phase Locked Loop) Internal to MCU
-
-_MCU Clock Source and HSE
-:_
-
-     HSE can be provided to the MCU via a crystal or external source ( from another ckt or from anther MCU)
-
-_MCU Clock Source and HSI :_
-
-    The HSI signal is generated from internal 16MHz or MUC specific RC Oscillator and can be used directly as a system clock, or as PLL input.
-
-    It also has a faster startup time than the HSE crystal oscillator however, even with calibration the frequency is less accurate than an external crystal oscillator or ceramic resonator.
-
-    On system reset the MCU select HSI as default clock source. 
-    
-_MCU Clock Source and PLL :_
+> ***Let's Begin the Journey***
 
 
+## Phase-2 GPIO Driver Development
 
+### GPIO Keywords
 
+``` markdown
+  - GPIO (General Purpose Input Output)
+  - GPIO Pin
+  - GPIO Port
+  - Output Buffer
+  - Input Buffer
+  - Enable Line
+  - PMOS and NMOS Transistor
+  - Higher and Lowe Potential
+  - Floating state
+  - Pullup and Pulldown state
+  - internal Pullup and Pulldown
+  - HI-Z state
+  - Open Drain
+  - Input and Output Mode
+  - Internal pull up and pull down resistor
 
----
+```
 
-<br/>
+### GPIO Concepts
 
-**Pheripheral Clock configuration**
-___
+- GPIO ports is collection of some fixed number of IO pins
+- GPIO ports of different microcontrollers has different IO pins (STM32 has 16 IO Pins for single port)
+- GPIO pins has two buffers along with enable line:
+  - Output Buffer
+  - Input Buffer
+  - Enable Line
 
-    - In morden MCU's, before using any peripheral, you must enable its peripheral clock using peripheral clock registers.
-    - By default, peripheral clocks of all most all peripherals will be disabled to save power.
-    - A peripheral won't take or respond to your configuration values until you enable its peripheral clock.
-    - In STM32 microcontrollers, peripheral clocks are managed through RCC registers.
+``` text
+- When the enable line is 0, the Output buffer will get activated and input buffer will get diactivated.
+- A Buffer is a connection of two CMOS transistor of PMOS and NMOS, which provides the higher potential and lower potential to the drain.     
+```
+
+- GPIO input mode with high impedence state
+  - it's also called HI-Z state
+  - it's about keeping the pin floating by not connecting to lower or higher potential.
+  - keeping the pin in a floating state can lead to leakage current which may lead to higher powe consumption.
+- GPIO input mode with pullup or pulldown state
+  - By activating pullup or pulldown to the pin the floating state can be avoided.
+
+``` text
+It's always safe to always to keep unused GPIO pins in either position of pullup or pulldown state so that they are reluctant to voltage fluctuation.
+```
+
+- GPIO output mode with open drain state
+  - In open drain configuration the PMOS transistor simply not present
+  - so when the transistor is switched ON the drain will be pulled low and if its OFF the drain will be in floating state
+  - so it can only pull down the pin and can't able to pull up resistor
+  - So to slove the floating state we need to activate internal pullup resistor
+- GPIO Mode with Push-Pull Configuration
+  - Here the Output will be pulled actively between high and low by using these two transistors
+  - The top transistor is PMOS and bottom transistor is NMOS transistor
+- Optimizing the I/O Power Consumption
+  - When the input pin is connected with pullup or pulldown state, there won't be any close loop path between the PMOS and NMOS transistor, so the higher potential won't reach the ground, so there won't any current leakage
+  - But in the case of floting state the input pin will toggle between high and low of about 50 or 70% between 0.5 V to 0.3 V which leads to leakage current
+  - In all Modern MCU, I/O pins use Schmitt trigger to combat the noise issues!!
+  
+### GPIO Registors
